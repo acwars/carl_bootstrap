@@ -6,17 +6,24 @@ import Layout from 'component/layout/index.js';
 
 // pages
 import Home from 'page/home/index.js';
+import Login from 'page/login/index.js';
 
 class App extends React.Component{
     render(){
         return (
             <Router>
-                <Layout>
-                    <Switch>
-                        <Route exact path="/" component={Home} />
-                        <Redirect from="*" to="/" />
-                    </Switch>
-                </Layout>
+                <Switch>
+                    <Route path='/login' component={Login} />
+                    <Route path='/' render={ props => (
+                        <Layout>
+                            <Switch>
+                                <Route exact path="/" component={Home} />
+                                <Route path="/product" component={Home} />
+                                <Route path="/product-category" component={Home} />
+                            </Switch>
+                        </Layout>
+                    )}/>
+                </Switch>
             </Router>
         )
     }
